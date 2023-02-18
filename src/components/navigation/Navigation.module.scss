@@ -1,0 +1,57 @@
+.navbar {
+    width: 100%;
+    max-width: $content-width;
+    padding: 0 $padding;
+}
+
+.navList {
+    @include flex-centered(column);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background: $main-color;
+    top: 0;
+    left: 0;
+    transform: translate(100%);
+    z-index: 3;
+    transition: transform 0.35s ease-in-out;
+    &.open {
+        transform: translate(0);
+    }
+    @include media('desktop') {
+        @include flex-centered(row, flex-start);
+        padding: $padding-m;
+        height: auto;
+        position: static;
+        transform: translate(0);
+    }
+}
+
+.navItem {
+    @include flex-centered;
+    list-style: none;
+    font-size: $font-size-m;
+    margin: $margin-m 0;
+    font-weight: $font-weight-200;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        color: $secondary-color;
+        text-shadow: $shadow;
+    }
+
+    &.active {
+        font-weight: $font-weight-500;
+        color: $secondary-color;
+        text-shadow: $shadow;
+    }
+    @include media('tablet') {
+        font-size: $font-size-l;
+    }
+    @include media('desktop') {
+        font-size: $font-size-s;
+        margin: 0 $margin-l 0 0;
+        min-width: 6.7rem;
+    }
+}

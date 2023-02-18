@@ -1,0 +1,49 @@
+.burger {
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    @include flex-centered(column, space-around);
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 4;
+
+    @include media('tablet') {
+        right: 2.5rem;
+        top: 2.5rem;
+    }
+
+    @include media('desktop') {
+        display: none;
+    }
+
+    div {
+        width: 2rem;
+        height: 0.25rem;
+        background: $font-color;
+        border-radius: 10px;
+        transition: all 0.3s linear;
+        position: relative;
+        transform-origin: 1px;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &.active {
+        :first-child {
+            transform: rotate(45deg);
+        }
+        :nth-child(2) {
+            opacity: 0;
+            transform: translate(10px);
+        }
+        :nth-child(3) {
+            transform: rotate(-45deg);
+        }
+    }
+}
